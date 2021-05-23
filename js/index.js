@@ -5,6 +5,7 @@ const refs = {
     hoursRef: document.querySelector('.value[data-value="hours"]'),
     minsRef: document.querySelector('.value[data-value="mins"]'),
     secsRef: document.querySelector('.value[data-value="secs"]'),
+    valueRef:document.querySelector('.value_start'),
     
 };
 
@@ -17,6 +18,7 @@ class CountdownTimer{
     constructor({targetDate, selector }) {
         this.selector = selector;
         this.targetDate = targetDate
+        refs.valueRef.textContent = `End date: ${targetDate}`;
     }
 
     init() {
