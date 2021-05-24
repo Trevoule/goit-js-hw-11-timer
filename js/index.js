@@ -5,20 +5,16 @@ const refs = {
     hoursRef: document.querySelector('.value[data-value="hours"]'),
     minsRef: document.querySelector('.value[data-value="mins"]'),
     secsRef: document.querySelector('.value[data-value="secs"]'),
-    valueRef:document.querySelector('.value_start'),
-    
+    valueRef: document.querySelector('.value_start'),    
 };
 
-// const targetTime = new Date('June 4,2021');
-// const endTime = Date.now();
-
-// updateCountdownface(getTimeComponents(targetTime - endTime));
 
 class CountdownTimer{
     constructor({targetDate, selector }) {
         this.selector = selector;
         this.targetDate = targetDate
         refs.valueRef.textContent = `End date: ${targetDate}`;
+        this.init();
     }
 
     init() {
@@ -28,7 +24,7 @@ class CountdownTimer{
 
     const deltaTime = this.targetDate - endTime;
     // const deltaTime = targetTime - endTime;
-    const time = this.getTimeComponents(deltaTime);
+            const time = this.getTimeComponents(deltaTime);
 
     this.updateCountdownface(time);
 
@@ -58,4 +54,3 @@ const timerClass = new CountdownTimer({
     targetDate: new Date('June 4,2021'),
 })
 
-timerClass.init()
