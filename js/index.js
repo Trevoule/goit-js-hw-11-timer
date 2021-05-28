@@ -9,7 +9,7 @@ class CountdownTimer{
 
     init() {
 
-        document.querySelector('.value_start').textContent = `End date: ${this.targetDate}`;
+        document.querySelector(`${this.selector} [data-value="end"]`).textContent = `End date: ${this.targetDate}`;
         setInterval(() => {
 
     const endTime = Date.now();
@@ -41,8 +41,14 @@ class CountdownTimer{
     };
 };
 
-const timerClass = new CountdownTimer({
+const timerClassId1 = new CountdownTimer({
     selector: '#timer-1',
     targetDate: new Date('June 4,2021'),
 });
+
+const timerClassId2 = new CountdownTimer({
+    selector: '#timer-2',
+    targetDate: new Date('June 15,2021'),
+});
+
 
