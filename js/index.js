@@ -8,21 +8,34 @@ class CountdownTimer{
     };
 
     init() {
-
         document.querySelector(`${this.selector} [data-value="end"]`).textContent = `End date: ${this.targetDate}`;
-        setInterval(() => {
+        if (this.targetDate >= Date.now()) {
+            this.start()
+            return
+        }
+        this.stop();
+    }
+
+    start(){
+
+     setInterval(() => {
 
     const endTime = Date.now();
 
     const deltaTime = this.targetDate - endTime;
-            const time = this.getTimeComponents(deltaTime);
-            // console.log(time);
+    const time = this.getTimeComponents(deltaTime);
+                
+    this.updateCountdownface(time);
 
-            this.updateCountdownface(time);
-            
+        
+        }, 1000)
+    };
 
-}, 1000)
-    }
+    stop() {
+    const timeZero = this.getTimeComponents(0);
+    this.updateCountdownface(timeZero);
+
+    };
 
     getTimeComponents(time) {
     const days = Math.floor(time / (1000 * 60 * 60 * 24));
@@ -48,7 +61,7 @@ const timerClassId1 = new CountdownTimer({
 
 const timerClassId2 = new CountdownTimer({
     selector: '#timer-2',
-    targetDate: new Date('June 15,2021'),
+    targetDate: new Date('May 15,2021'),
 });
 
 
