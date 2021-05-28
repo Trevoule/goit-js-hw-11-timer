@@ -1,12 +1,11 @@
 
 class CountdownTimer{
-    constructor({targetDate, selector }) {
+    constructor({ targetDate, selector }) {
         this.selector = selector;
         this.targetDate = targetDate
 
         this.init();
     };
-
 
     init() {
 
@@ -17,9 +16,10 @@ class CountdownTimer{
 
     const deltaTime = this.targetDate - endTime;
             const time = this.getTimeComponents(deltaTime);
-            console.log(time);
+            // console.log(time);
 
-    this.updateCountdownface(time);
+            this.updateCountdownface(time);
+            
 
 }, 1000)
     }
@@ -34,11 +34,10 @@ class CountdownTimer{
     }
 
     updateCountdownface({ days, hours, mins, secs }) {
-        document.querySelector('.value[data-value="days"]').textContent = days;
-        document.querySelector('.value[data-value="hours"]').textContent = hours;
-        document.querySelector('.value[data-value="mins"]').textContent = mins;
-        document.querySelector('.value[data-value="secs"]').textContent = secs;
-    
+        document.querySelector(`${this.selector} [data-value="days"]`).textContent = days;
+        document.querySelector(`${this.selector} [data-value="hours"]`).textContent = hours;
+        document.querySelector(`${this.selector} [data-value="mins"]`).textContent = mins;
+        document.querySelector(`${this.selector} [data-value="secs"]`).textContent = secs;
     };
 };
 
